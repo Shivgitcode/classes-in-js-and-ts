@@ -1,69 +1,67 @@
 "use strict";
-console.log("Hello");
-
+// fconsole.log("Hello");
+// class Player {
+//   readonly first: string;
+//   readonly last: string;
+//   //   public score: number = 0;
+//   private score: number = 0;
+//   constructor(first: string, last: string) {
+//     this.first = first;
+//     this.last = last;
+//     this.secretMethod();
+//   }
+//   private secretMethod(): void {
+//     console.log("Secret method!!");
+//   }
+// }
 class Player {
-  static description = "Player In Our Game";
-  numLives = 10;
-  #score = 0;
-  constructor(first, last) {
-    this.first = first;
-    this.last = last;
-    this.#sceret();
-    // console.log("IN constructor");
-  }
-
-  getScore() {
-    console.log(this.#score);
-  }
-
-  set score(newScore) {
-    if (newScore < 0) {
-      throw new Error("Score must be positive");
+    //   public score: number = 0;
+    constructor(first, last, _score) {
+        this.first = first;
+        this.last = last;
+        this._score = _score;
+        this.first = first;
+        this.last = last;
+        this.secretMethod();
     }
-    this.#score = newScore;
-  }
-
-  get fullName() {
-    return `${this.first} ${this.last}`;
-  }
-
-  get score() {
-    return this.#score;
-  }
-
-  updateScore(newscore) {
-    this.#score = newscore;
-  }
-
-  taunt() {
-    console.log("BOOYAH!");
-  }
-
-  loseLife() {
-    this.numLives -= 1;
-  }
-  #sceret() {
-    console.log("Wallah");
-  }
+    secretMethod() {
+        console.log("Secret method!!");
+    }
+    get fullName() {
+        return `${this.first} ${this.last}`;
+    }
+    //   set fullName(): string {}
+    set score(newScore) {
+        if (newScore < 0) {
+            throw new Error("Score cannot be negative");
+        }
+        this._score = newScore;
+    }
 }
-
-const player1 = new Player();
-console.log(player1);
-
-const player2 = new Player("shivansh", "aggrwal");
-// console.log(player2.first);
-// console.log(player1.numLives);
-// console.log(player1.score);
-// player1.loseLife();
-// console.log(player1.numLives);
-// player2.taunt();
-// // player2.#score;
-player2.getScore();
-player2.updateScore(30);
-player2.getScore();
-console.log(player2.fullName);
-player1.score = 2342;
-console.log(player1.score);
-// player1.description;
-console.log(player1.description);
-console.log(Player.description);
+class AdminPlayer extends Player {
+    constructor() {
+        super(...arguments);
+        this.isAdmin = true;
+    }
+    maxScore() {
+        this._score = 9999999999;
+    }
+}
+const elton = new Player("shivansh", "Aggarwal", 30);
+console.log(elton.first);
+console.log(elton.score);
+console.log(elton.score);
+elton.score = 30;
+class Bike {
+    constructor(color) {
+        this.color = color;
+    }
+}
+class Jacket {
+    constructor(brand, color) {
+        this.brand = brand;
+        this.color = color;
+    }
+}
+const bike1 = new Bike("red");
+const jacket1 = new Jacket("Prada", "black");
